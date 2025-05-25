@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Hermanitas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebf3;
+            color: #d23369;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto 30px;
+            border: 10px solid white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .photo-frame img:hover {
+            transform: scale(1.05);
+        }
+
+        .message {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .music-player {
+            margin: 20px 0;
+        }
+
+        #music-btn {
+            background-color: #ff85a2;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #music-btn:hover {
+            background-color: #d23369;
+            transform: scale(1.05);
+        }
+
+        #confetti-btn {
+            background-color: #ff6b9d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+
+        #confetti-btn:hover {
+            background-color: #d23369;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Feliz Cumpleaños Hermanitas!</h1>
+        
+        <div class="photo-frame">
+            <img id="birthday-photo" src="feliz .jpg" alt="Mis queridas hermanitas" class="floating">
+        </div>
+        
+        <div class="message">
+            <p>Queridas hermanitas,</p>
+            <p>Hoy es un día muy especial, y quiero desearles un cumpleaños lleno de alegría, amor y sorpresas. Ustedes son las mejores hermanitas que uno podría desear, y cada día a su lado es una bendición.</p>
+            <p>Espero que este nuevo año de vida les traiga muchas aventuras, risas y momentos inolvidables. Recuerden siempre que cuentan con mi apoyo incondicional y que las quiero muchísimo.</p>
+            <p>Con todo mi cariño,</p>
+            <p><span style="font-family: 'Comic Sans MS', cursive; font-size: 1.5rem; color: #ff6b9d;">tu hermanitos Bryant</span></p>
+        </div>
+
+        <div class="music-player">
+            <button id="music-btn">🎵 Reproducir Música</button>
+            <audio id="birthday-audio" loop>
+                <source src="Audio de WhatsApp 2025-05-25 a las 03.29.34_42ac11af.mp3.unknown" 
+                type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>
+        </div>
+        
+        <button id="confetti-btn">¡Haz click para celebrar!</button>
+    </div>
+
+    <script>
+        // Control de música
+        const musicBtn = document.getElementById('music-btn');
+        const birthdayAudio = document.getElementById('birthday-audio');
+
+        musicBtn.addEventListener('click', function() {
+            if (birthdayAudio.paused) {
+                birthdayAudio.play();
+                musicBtn.innerHTML = '⏸ Pausar Música';
+            } else {
+                birthdayAudio.pause();
+                musicBtn.innerHTML = '🎵 Reproducir Música';
+            }
+        });
+
+        // Confeti
+        const confettiBtn = document.getElementById('confetti-btn');
+        
+        confettiBtn.addEventListener('click', function() {
+            // Cargar el script de confeti dinámicamente
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
+            script.onload = () => {
+                confetti({
+                    particleCount: 150,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            };
+            document.head.appendChild(script);
+            
+            // Reproducir música si no está sonando
+            if (birthdayAudio.paused) {
+                birthdayAudio.play();
+                musicBtn.innerHTML = '⏸ Pausar Música';
+            }
+        });
+
+        // Mensaje en consola
+        console.log("%c¡Feliz Cumpleaños Hermanitas!", "color: #d23369; font-size: 20px; font-weight: bold;");
+    </script>
+</body>
+</html>
